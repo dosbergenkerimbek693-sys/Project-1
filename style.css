@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+}
+
+.new-div {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: lightblue;
+}
+
+.active {
+    background-color: lightgreen;
+    border: 2px solid green;
+}
+
+#change-text {
+    cursor: pointer;
+}
