@@ -1,80 +1,217 @@
-// =============================
-// ТАПСЫРМА 1
-// =============================
+// ==========================================
+// ВКЛАДКАЛАР
+// ==========================================
 
-// 1. ID бойынша элементті тауып,
-// оның мәтінін "Сәлем, әлем!" деп өзгерту
-const mainTitle = document.getElementById("main-title");
-mainTitle.textContent = "Сәлем, әлем!";
+function openTab(tabName, button) {
 
+    // Барлық вкладкаларды жасыру
+    const tabs = document.querySelectorAll(".tab-content");
 
-// 2. Жаңа div элементін жасау
-const newDiv = document.createElement("div");
+    tabs.forEach(function(tab) {
+        tab.classList.remove("active");
+    });
 
-// Оған класс беру
-newDiv.className = "new-div";
+    // Барлық кнопкалардан active класын алып тастау
+    const buttons = document.querySelectorAll(".tab-button");
 
-// Мәтін беру
-newDiv.textContent = "Мен жаңа элементпін";
+    buttons.forEach(function(btn) {
+        btn.classList.remove("active");
+    });
 
-// body соңына қосу
-document.body.appendChild(newDiv);
+    // Таңдалған вкладканы көрсету
+    document.getElementById(tabName).classList.add("active");
 
-
-// 3. Ескі элемент класы бар элементті жою
-const oldElement = document.querySelector(".old-element");
-
-if (oldElement) {
-    oldElement.remove();
+    // Басылған кнопкаға active беру
+    button.classList.add("active");
 }
 
 
-// 4. "Бұл ауыспалы абзац" мәтіні бар p элементін жасау
-const paragraph = document.createElement("p");
-paragraph.textContent = "Бұл ауыспалы абзац";
-
-document.body.appendChild(paragraph);
+// ==========================================
+// ТАПСЫРМА 1
+// ==========================================
 
 
-// 5. Абзацты басқанда мәтін түсін
-// және қаріп өлшемін өзгерту
-paragraph.addEventListener("click", function () {
-    paragraph.style.color = "red";
-    paragraph.style.fontSize = "24px";
-});
+// 1. ID бойынша элементті тауып,
+// мәтінін өзгерту
+
+function changeText() {
+
+    const element = document.getElementById("main-title");
+
+    element.textContent = "Сәлем, әлем!";
+
+}
 
 
-// =============================
-// ТАПСЫРМА 2
-// =============================
+// 2. Жаңа DIV жасау
 
-// Элементті таңдау
-const element = document.getElementById("class-test");
+function createNewDiv() {
 
-// active класын қосу/жою
-element.classList.toggle("active");
+    const newDiv = document.createElement("div");
+
+    // Класс беру
+    newDiv.classList.add("new-div");
+
+    // Мәтін беру
+    newDiv.textContent = "Мен жаңа элементпін";
+
+    // body соңына қосу
+    document.getElementById("new-element-area")
+        .appendChild(newDiv);
+
+}
 
 
-// Барлық элемент кластарының тізімін консольге шығару
-console.log("Барлық кластар:");
+// 3. Ескі элементті жою
 
-document.querySelectorAll("*").forEach(function (item) {
-    if (item.classList.length > 0) {
-        console.log(item.classList);
+function deleteOldElement() {
+
+    const oldElement =
+        document.querySelector(".old-element");
+
+    if (oldElement) {
+
+        oldElement.remove();
+
+        alert("Ескі элемент жойылды!");
+
+    } else {
+
+        alert("Ескі элемент бұрыннан жойылған!");
+
     }
+
+}
+
+
+// 4. P элементін жасау
+
+function createParagraph() {
+
+    const paragraph =
+        document.createElement("p");
+
+    paragraph.textContent =
+        "Бұл ауыспалы абзац";
+
+    paragraph.classList.add("new-div");
+
+    document.getElementById("paragraph-area")
+        .appendChild(paragraph);
+
+}
+
+
+// 5. Абзацты басқанда
+// түсі мен қаріп өлшемін өзгерту
+
+const clickParagraph =
+    document.getElementById("click-paragraph");
+
+clickParagraph.addEventListener("click", function() {
+
+    this.style.color = "#2563eb";
+
+    this.style.fontSize = "26px";
+
+    this.textContent =
+        "✅ Абзацтың түсі мен өлшемі өзгерді!";
+
 });
 
 
-// Кластарды p тегіне шығару
-const classListParagraph = document.getElementById("class-list");
+// ==========================================
+// ТАПСЫРМА 2
+// ==========================================
 
-let allClasses = [];
 
-document.querySelectorAll("*").forEach(function (item) {
-    item.classList.forEach(function (className) {
-        allClasses.push(className);
+// 1. Active класын қосу/жою
+
+function toggleActive() {
+
+    const element =
+        document.getElementById("class-element");
+
+    // Егер жоқ болса қосады,
+    // бар болса алып тастайды
+    element.classList.toggle("active");
+
+    const status =
+        document.getElementById("class-status");
+
+    if (element.classList.contains("active")) {
+
+        status.textContent =
+            "✅ Active класы қосылды";
+
+    } else {
+
+        status.textContent =
+            "❌ Active класы жойылды";
+
+    }
+
+}
+
+
+// 2. Барлық кластарды Console-ға шығару
+
+function showClassesInConsole() {
+
+    console.clear();
+
+    console.log("========== БАРЛЫҚ ЭЛЕМЕНТ КЛАСТАРЫ ==========");
+
+    const elements =
+        document.querySelectorAll("*");
+
+    elements.forEach(function(element) {
+
+        if (element.classList.length > 0) {
+
+            console.log(
+                element.tagName +
+                " → " +
+                Array.from(element.classList).join(", ")
+            );
+
+        }
+
     });
-});
 
-classListParagraph.textContent =
-    "Барлық кластар: " + allClasses.join(", ");
+    console.log("==============================================");
+
+    alert("Барлық кластар Console-ға шығарылды!");
+
+}
+
+
+// 3. Барлық кластарды P тегіне шығару
+
+function showClassesInParagraph() {
+
+    const elements =
+        document.querySelectorAll("*");
+
+    let allClasses = [];
+
+    elements.forEach(function(element) {
+
+        element.classList.forEach(function(className) {
+
+            if (!allClasses.includes(className)) {
+
+                allClasses.push(className);
+
+            }
+
+        });
+
+    });
+
+
+    document.getElementById("class-list").textContent =
+        "Барлық кластар: " +
+        allClasses.join(", ");
+
+}

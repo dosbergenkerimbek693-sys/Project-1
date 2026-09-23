@@ -3,25 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript тапсырмалары</title>
+    <title>JavaScript DOM Lab</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1 id="main-title">Бастапқы мәтін</h1>
+    <header>
+        <div class="logo">JS <span>LAB</span></div>
+        <p>JavaScript — DOM элементтерімен жұмыс</p>
+    </header>
 
-    <div class="old-element">
-        Бұл ескі элемент
-    </div>
+    <main class="container">
 
-    <p id="change-text">Бұл ауыспалы абзац</p>
+        <!-- Вкладкалар -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab('task1', this)">
+                📋 Тапсырма 1
+            </button>
 
-    <div id="class-test" class="box test">
-        Класс басқару элементі
-    </div>
+            <button class="tab-button" onclick="openTab('task2', this)">
+                ⚙️ Тапсырма 2
+            </button>
+        </div>
 
-    <p id="class-list"></p>
+
+        <!-- ========================= -->
+        <!-- ТАПСЫРМА 1 -->
+        <!-- ========================= -->
+
+        <section id="task1" class="tab-content active">
+
+            <div class="title-box">
+                <span>01</span>
+                <div>
+                    <h2>DOM элементтерімен жұмыс</h2>
+                    <p>Элементтерді табу, өзгерту, жасау және жою</p>
+                </div>
+            </div>
+
+
+            <!-- 1 -->
+            <div class="task-card">
+
+                <div class="task-number">1</div>
+
+                <div class="task-info">
+                    <h3>ID бойынша элементтің мәтінін өзгерту</h3>
+
+                    <p>
+                        ID арқылы элемент табылады және оның мәтіні
+                        <b>«Сәлем, әлем!»</b> болып өзгереді.
+                    </p>
+
+                    <div id="main-title" class="demo-element">
+                        Бастапқы мәтін
+                    </div>
+
+                    <button onclick="changeText()" class="primary-btn">
+                        ✨ Мәтінді өзгерту
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- 2 -->
+            <div class="task-card">
+
+                <div class="task-number">2</div>
+
+                <div class="task-info">
+
+                    <h3>Жаңа DIV элементін жасау</h3>
+
+                    <p>
+                        <b>new-div</b> класымен жаңа элемент жасалып,
+                        body соңына қосылады.
+                    </p>
+
+                    <div id="new-element-area"></div>
+
+                    <button onclick="createNewDiv()" class="primary-btn">
+                        ➕ Жаңа DIV жасау
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 3 -->
+            <div class="task-card">
+
+                <div class="task-number">3</div>
+
+                <div class="task-info">
+
+                    <h3>Ескі элементті жою</h3>
+
+                    <p>
+                        <b>old-element</b> класы бар элемент жойылады.
+                    </p>
+
+                    <div id="old-element" class="old-element">
+                        🗑️ Бұл — ескі элемент
+                    </div>
+
+                    <button onclick="deleteOldElement()" class="danger-btn">
+                        🗑️ Элементті жою
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 4 -->
+            <div class="task-card">
+
+                <div class="task-number">4</div>
+
+                <div class="task-info">
+
+                    <h3>Ауыспалы абзац жасау</h3>
+
+                    <p>
+                        <b>«Бұл ауыспалы абзац»</b> мәтіні бар
+                        жаңа P элементі жасалады.
+                    </p>
+
+                    <div id="paragraph-area"></div>
+
+                    <button onclick="createParagraph()" class="primary-btn">
+                        📝 Абзац жасау
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- 5 -->
+            <div class="task-card">
+
+                <div class="task-number">5</div>
+
+                <div class="task-info">
+
+                    <h3>Абзацты басқанда өзгерту</h3>
+
+                    <p>
+                        Абзацты басқанда оның мәтін түсі мен
+                        қаріп өлшемі өзгереді.
+                    </p>
+
+                    <p id="click-paragraph" class="click-paragraph">
+                        👆 Мені басып көр!
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- ТАПСЫРМА 2 -->
+        <!-- ========================= -->
+
+        <section id="task2" class="tab-content">
+
+            <div class="title-box">
+                <span>02</span>
+                <div>
+                    <h2>Элемент кластарын басқару</h2>
+                    <p>classList арқылы CSS кластарымен жұмыс</p>
+                </div>
+            </div>
+
+
+            <!-- Active class -->
+            <div class="task-card">
+
+                <div class="task-number">1</div>
+
+                <div class="task-info">
+
+                    <h3>Active класын басқару</h3>
+
+                    <p>
+                        Егер <b>active</b> класы жоқ болса — қосылады.
+                        Бар болса — жойылады.
+                    </p>
+
+                    <div id="class-element" class="class-demo">
+                        CLASS ELEMENT
+                    </div>
+
+                    <button onclick="toggleActive()" class="primary-btn">
+                        🔄 Active класын қосу / жою
+                    </button>
+
+                    <div id="class-status" class="status">
+                        Active класы тексерілуде...
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Console -->
+            <div class="task-card">
+
+                <div class="task-number">2</div>
+
+                <div class="task-info">
+
+                    <h3>Барлық кластарды консольге шығару</h3>
+
+                    <p>
+                        Беттегі барлық элементтердің кластарын
+                        JavaScript арқылы табады.
+                    </p>
+
+                    <button onclick="showClassesInConsole()" class="primary-btn">
+                        🖥️ Console-ға шығару
+                    </button>
+
+                    <div class="console-info">
+                        💡 Нәтижені көру үшін
+                        <b>F12 → Console</b> бөліміне кір.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- P tag -->
+            <div class="task-card">
+
+                <div class="task-number">3</div>
+
+                <div class="task-info">
+
+                    <h3>Кластарды P тегіне шығару</h3>
+
+                    <p>
+                        Барлық кластар төмендегі абзацқа шығарылады.
+                    </p>
+
+                    <button onclick="showClassesInParagraph()" class="primary-btn">
+                        📋 Кластарды көрсету
+                    </button>
+
+                    <p id="class-list">
+                        Нәтиже осы жерде көрсетіледі.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>JavaScript DOM Laboratory Work</p>
+        <span>© 2026</span>
+    </footer>
+
 
     <script src="script.js"></script>
+
 </body>
 </html>
